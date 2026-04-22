@@ -33,13 +33,14 @@
   "Pick an abbrev to expand at `point'."
   (interactive)
   (if-let* ((abbreviations
-             (cl-loop
-              for table in (list local-abbrev-table global-abbrev-table)
-              nconc (cl-loop
-                     for abbrev being the symbols of table
-                     for shortcut = (symbol-name abbrev)
-                     for expansion = (abbrev-expansion shortcut table)
-                     when expansion collect (cons (format "%-10s %s" shortcut expansion) shortcut))))
+             (sort
+              (cl-loop
+               for table in (list local-abbrev-table global-abbrev-table)
+               nconc (cl-loop
+                      for abbrev being the symbols of table
+                      for shortcut = (symbol-name abbrev)
+                      for expansion = (abbrev-expansion shortcut table)
+                      when expansion collect (cons (format "%-10s %s" shortcut expansion) shortcut)))))
             (abbreviation (completing-read "Abbreviation: " abbreviations nil t))
             (shortcut (cdr (assoc abbreviation abbreviations))))
       (save-excursion
