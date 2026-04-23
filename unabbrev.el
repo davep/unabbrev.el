@@ -2,7 +2,7 @@
 ;; Copyright 2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 0.01
+;; Version: 1.0.0
 ;; Keywords: abbrev, convenience
 ;; URL: https://github.com/davep/unabbrev.el
 ;; Package-Requires: ((emacs "26.1"))
